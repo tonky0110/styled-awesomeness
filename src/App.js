@@ -33,6 +33,8 @@ const Button = styled.button`
   background-color: ${props => props.danger ? '#e74c3c' : '#2ecc71'};
 `;
 
-const Anchor = Button.withComponent('a');
+const Anchor = styled(Button.withComponent('a'))`
+  text-decoration:none;
+`;
 
 export default App;
