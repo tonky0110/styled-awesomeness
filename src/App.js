@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import 'reset-css';
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 const App = () => {
   return (
     <Container>
       <Button>Success</Button>
-      <Button danger>Hello</Button>
+      <Button danger rotationTime={2}>Hello</Button>
       <Anchor href="http://www.google.com">Go to Google</Anchor>
     </Container>
   );
@@ -31,10 +31,24 @@ const Button = styled.button`
     outline: none;
   }
   background-color: ${props => props.danger ? '#e74c3c' : '#2ecc71'};
+  ${props => {
+    if (props.danger) {
+      return css`animation:  ${props.rotationTime}s ${rotation} linear infinite`;
+    }
+  }}
 `;
 
 const Anchor = styled(Button.withComponent('a'))`
   text-decoration:none;
+`;
+
+const rotation = keyframes`
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
 `;
 
 export default App;
